@@ -24,7 +24,6 @@ public class Menu : MonoBehaviour
     
     public void StartGame(string sceneName)
     {
-        Debug.Log("what? " + sceneName);
         Time.timeScale = 1f;
         FindObjectOfType<Fader>().FadeTo(sceneName);
     }
