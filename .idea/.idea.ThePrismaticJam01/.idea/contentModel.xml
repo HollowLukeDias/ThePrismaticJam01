@@ -9,6 +9,7 @@
         <e p="Script" t="Include">
           <e p="Command.cs" t="Include" />
           <e p="Fader.cs" t="Include" />
+          <e p="InputHandler.cs" t="Include" />
           <e p="Menu.cs" t="Include" />
           <e p="SoundManager.cs" t="Include" />
           <e p="Sounds.cs" t="Include" />

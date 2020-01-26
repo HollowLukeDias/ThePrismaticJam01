@@ -15,7 +15,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shader/ImagePixelateOverTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Menu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Fader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Command.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/Command/Assets/Command.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/InputHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/Command/Assets/InputHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -26,6 +30,8 @@
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateOverTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Menu.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Fader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/InputHandler.cs" />
       </list>
     </option>
   </component>
@@ -66,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1580020847371</updated>
       <workItem from="1580020876254" duration="885000" />
-      <workItem from="1580022023383" duration="8159000" />
+      <workItem from="1580022023383" duration="11224000" />
     </task>
     <servers />
   </component>

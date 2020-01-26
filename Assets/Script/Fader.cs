@@ -41,12 +41,12 @@ public class Fader : MonoBehaviour
     private IEnumerator FadeOut(string sceneName)
     {
         var timeToFade = 0f;
+        fadeImage.gameObject.SetActive(true);
         while (timeToFade < 1f)
         {
             
             timeToFade += Time.deltaTime/timeToFadeOut;
             float a = curveOut.Evaluate(timeToFade);
-            fadeImage.gameObject.SetActive(true);
             fadeImage.color = new Color(0, 0, 0, a);
             yield return 0;
         }
