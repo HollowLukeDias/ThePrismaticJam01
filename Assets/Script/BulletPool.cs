@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    public static BulletPool bulletPoolIntance;
+    public static BulletPool bulletPoolInstance;
 
     [SerializeField]
     private GameObject pooledBullet;
@@ -14,7 +14,7 @@ public class BulletPool : MonoBehaviour
 
     private void Awake()
     {
-        bulletPoolIntance = this;
+        bulletPoolInstance = this;
     }
 
     // Start is called before the first frame update

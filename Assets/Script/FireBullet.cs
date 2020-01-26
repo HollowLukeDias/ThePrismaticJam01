@@ -8,27 +8,30 @@ public class FireBullet : MonoBehaviour
     private int bulletsAmount = 1;
 
     private Vector2 bulletMoveDirection;
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    private float startTime, fireRate = 0.5f;
+
+    private void Start()
     {
-        InvokeRepeating("Fire", 0f, 2f);
+        startTime = 0f;
     }
 
     private void Fire()
     {
-        for (int i = 0; i < bulletsAmount; i++) {
-            GameObject bul = BulletPool.bulletPoolIntance.getBullet();
-                bul.transform.position = transform.position;
-                bul.transform.rotation = transform.rotation;
-                bul.SetActive(true);
-                bul.GetComponent<Bullet>().setMoveDirection(Vector2.up);
-        }
+        GameObject bul = BulletPool.bulletPoolInstance.getBullet();
+            bul.transform.position = transform.position;
+            bul.transform.rotation = transform.rotation;
+            bul.SetActive(true);
+            bul.GetComponent<Bullet>().setMoveDirection(Vector2.up);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1") && (Time.time - startTime) >= fireRate) {
+            Fire();
+            fireRate = Time.time;
+        }
     }
 
 }

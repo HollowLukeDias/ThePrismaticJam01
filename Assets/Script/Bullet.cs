@@ -14,13 +14,6 @@ public class Bullet : MonoBehaviour
         Invoke("destroy", 3f);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(moveDirection * moveSpeed * Time.timeScale);
@@ -32,6 +25,10 @@ public class Bullet : MonoBehaviour
 
     private void destroy()
     {
+        gameObject.SetActive(false);
+    }
+
+    public void explode() {
         gameObject.SetActive(false);
     }
 
