@@ -6,32 +6,26 @@ public class FireBullet : MonoBehaviour
 {
     [SerializeField]
     private int bulletsAmount = 1;
-
     private Vector2 bulletMoveDirection;
-
     [SerializeField]
     private float startTime, fireRate = 0.5f;
+
+    public float FireRate => fireRate;
 
     private void Start()
     {
         startTime = 0f;
     }
+    
+    
 
-    private void Fire()
+    public void Fire(Quaternion rotation, Vector3 direction)
     {
         GameObject bul = BulletPool.bulletPoolInstance.getBullet();
             bul.transform.position = transform.position;
-            bul.transform.rotation = transform.rotation;
+            bul.transform.rotation = rotation; //Changed this so you can shooting using player!
             bul.SetActive(true);
-            bul.GetComponent<Bullet>().setMoveDirection(Vector2.up);
-    }
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1") && (Time.time - startTime) >= fireRate) {
-            Fire();
-            fireRate = Time.time;
+            bul.GetComponent<Bullet>().SetMoveDirection(direction);
         }
-    }
 
 }

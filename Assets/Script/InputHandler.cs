@@ -1,57 +1,100 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject actor;
-    [SerializeField] private float speed;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private Transform shootingPoint;
+    private FireBullet firing;
+    private Animator anim;
+    private Camera main;
+    private Command KeyW, KeyS, KeyA, KeyD, KeyNothing;
+    private float speedInFrame;
     private Rigidbody2D rb2D;
-    private Command KeyW, KeyS, KeyA, KeyD;
-    private bool pressing = false;
-    
+    private Vector2 moveInput;
+    private Coroutine firingCoroutine;
+    private bool firingCoroutineOn = false;
+
     private void Start()
     {
-        rb2D = actor.GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
+        main = Camera.main;
+        firing = GetComponent<FireBullet>();
         
-        KeyW = new    MoveUp();
-        KeyS = new  MoveDown();
-        KeyA = new  MoveLeft();
+        KeyW = new MoveUp();
+        KeyS = new MoveDown();
         KeyD = new MoveRight();
+        KeyA = new MoveLeft();
+        KeyNothing = new DoNothing();
     }
 
     private void Update()
     {
-        HandleInput();
+        HandleMovementInput();
+        HandleFireInput();
     }
 
-    private void HandleInput()
+    private void HandleFireInput()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetMouseButtonDown(0))
         {
-            KeyW.ExecuteMovement(rb2D, speed);
-            pressing = true;
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            firingCoroutine = StartCoroutine(HandleFire());
+        } else if (Input.GetMouseButtonUp(0))
         {
-            KeyS.ExecuteMovement(rb2D, speed);
-            pressing = true;
+            StopCoroutine(firingCoroutine);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            KeyA.ExecuteMovement(rb2D, speed);
-            pressing = true;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            KeyD.ExecuteMovement(rb2D, speed);
-            pressing = true;
-        }
+    }
 
-        if (pressing == false)
+    private IEnumerator HandleFire()
+    {
+        var fireRate = firing.FireRate;
+        while (true)
         {
-            rb2D.velocity = Vector2.zero;
+            var position = main.ScreenToWorldPoint(Input.mousePosition);
+            position = new Vector3(position.x, position.y, 0);
+            var direction =  position - transform.position ;
+            var angleFloat = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            var angleQuaternion = Quaternion.Euler(0, 0, angleFloat - 90f);
+            firing.Fire(angleQuaternion, direction);
+            yield return new WaitForSeconds(1/fireRate);
         }
-        pressing = false;
+    }
+    
+    private void HandleMovementInput()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            KeyW.Execute(out moveInput.y, anim);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            KeyS.Execute(out moveInput.y, anim);
+        }
+        else
+        {
+            KeyNothing.Execute(out moveInput.y, anim);
+        }
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            KeyD.Execute(out moveInput.x, anim);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            KeyA.Execute(out moveInput.x, anim);
+        }
+        else
+        {
+            KeyNothing.Execute(out moveInput.x, anim);
+        }
+        
+        ExecuteMovement();
+    }
+
+    private void ExecuteMovement()
+    {
+        speedInFrame = movementSpeed * Time.deltaTime;
+        rb2D.velocity = moveInput * speedInFrame;
     }
 }

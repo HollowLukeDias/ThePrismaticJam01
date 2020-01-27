@@ -4,44 +4,65 @@ using UnityEngine;
 
 public abstract class Command
 {
-    public abstract void ExecuteMovement(Rigidbody2D rb2D, float speed);
+    public abstract void Execute(out float direction, Animator anim);
 }
 
 public class MoveUp : Command
 {
-    public override void ExecuteMovement(Rigidbody2D rb2D, float speed)
+    public override void Execute(out float direction, Animator anim)
     {
-        rb2D.velocity += Vector2.up * Time.deltaTime * speed;
+        direction = 1f;
+        
+        anim.SetBool("Down", false);
+        anim.SetBool("Right", false);
+        anim.SetBool("Left", false);
+        anim.SetBool("Up", true);
     }
 }
 
 public class MoveDown : Command
 {
-    public override void ExecuteMovement(Rigidbody2D rb2D, float speed)
+    public override void Execute(out float direction, Animator anim)
     {
-        rb2D.velocity += Vector2.down * Time.deltaTime * speed;
-    }
-}
-
-public class MoveLeft : Command
-{
-    public override void ExecuteMovement(Rigidbody2D rb2D, float speed)
-    {
-        rb2D.velocity += Vector2.left * Time.deltaTime * speed;
+        direction = -1f;
+        
+        anim.SetBool("Right", false);
+        anim.SetBool("Left", false);
+        anim.SetBool("Up", false);
+        anim.SetBool("Down", true);
     }
 }
 
 public class MoveRight : Command
 {
-    public override void ExecuteMovement(Rigidbody2D rb2D, float speed)
+    public override void Execute(out float direction, Animator anim)
     {
-        rb2D.velocity += Vector2.right * Time.deltaTime * speed;
+        direction = 1f;
+        
+        anim.SetBool("Down", false);
+        anim.SetBool("Left", false);
+        anim.SetBool("Up", false);
+        anim.SetBool("Right", true);
+    }
+}
+
+public class MoveLeft : Command
+{
+    public override void Execute(out float direction, Animator anim)
+    {
+        direction = -1f;
+        
+        anim.SetBool("Down", false);
+        anim.SetBool("Right", false);
+        anim.SetBool("Up", false);
+        anim.SetBool("Left", true);
     }
 }
 
 public class DoNothing : Command
 {
-    public override void ExecuteMovement(Rigidbody2D rb2D, float speed)
+    public override void Execute(out float direction, Animator anim)
     {
+        direction = 0f;
     }
 }

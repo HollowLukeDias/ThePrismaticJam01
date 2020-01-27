@@ -5,30 +5,37 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Vector2 moveDirection;
+    private Rigidbody2D rb2D;
     
     [SerializeField]
     private float moveSpeed = 0.1f;
 
+    private void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+    }
+
     private void OnEnable()
     {
-        Invoke("destroy", 3f);
+        Invoke("DestroyBullet", 3f);
     }
 
     void Update()
     {
-        transform.Translate(moveDirection * moveSpeed * Time.timeScale);
+        var frameSpeed = moveSpeed * Time.timeScale;
+        rb2D.velocity = moveDirection * frameSpeed;
     }
 
-    public void setMoveDirection(Vector2 dir) {
-        moveDirection = dir;
+    public void SetMoveDirection(Vector2 dir) {
+        moveDirection = dir.normalized;
     }
-
-    private void destroy()
+    
+    private void DestroyBullet()
     {
         gameObject.SetActive(false);
     }
 
-    public void explode() {
+    public void Explode() {
         gameObject.SetActive(false);
     }
 
