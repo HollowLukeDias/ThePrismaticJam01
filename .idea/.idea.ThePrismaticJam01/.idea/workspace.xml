@@ -18,7 +18,7 @@
     <setting file="file://$USER_HOME$/Desktop/Command/Assets/InputHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shader/ImagePixelateOverTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Menu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/InputHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Fader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Command/Assets/Command.cs" root0="SKIP_HIGHLIGHTING" />
@@ -30,15 +30,17 @@
         <option value="$PROJECT_DIR$/Assets/ImagePixelateEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/ImagePixelateEffect.shader" />
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateEffect.cs" />
-        <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateOverTime.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/Menu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/Fader.cs" />
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateEffect.shader" />
-        <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/BulletPool.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/FireBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Menu.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/InputHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/FireBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Fader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateOverTime.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/BulletPool.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/SoundManager.cs" />
       </list>
     </option>
   </component>
@@ -55,6 +57,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

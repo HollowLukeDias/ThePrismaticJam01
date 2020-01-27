@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-
     [SerializeField] private GameObject panel;
     [SerializeField]private bool canPause = false;
     private bool isPaused = false;

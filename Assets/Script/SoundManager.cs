@@ -5,14 +5,16 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private Sounds[] _sounds;
-    public static SoundManager instance;
+    public static SoundManager Instance;
 
+    #region Initialization
+    
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -30,14 +32,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    #endregion
+    
     private void Start()
     {
         Play("Theme");
     }
     
-    public void Play(string name)           //The method that actually plays the clip in any other script
+    #region Play and Stop logic
+    
+    public void Play(string musicName)           //The method that actually plays the clip in any other script
     {
-        Sounds s = Array.Find(_sounds, sound => sound.name == name); //Searches for a sound with the name passed as a parameter
+        Sounds s = Array.Find(_sounds, sound => sound.name == musicName); //Searches for a sound with the name passed as a parameter
         if (s == null)                                             //If it is not found, do nothing
         {
             Debug.Log("WrongName");
@@ -46,9 +52,9 @@ public class SoundManager : MonoBehaviour
         s.AudioSource.Play();           //Plays the clip with the audioSource
     }
 
-    public void Stop(string name)
+    public void Stop(string musicName)
     {
-        Sounds s = Array.Find(_sounds, sound => sound.name == name); //Searches for a sound with the name passed as a parameter
+        Sounds s = Array.Find(_sounds, sound => sound.name == musicName); //Searches for a sound with the name passed as a parameter
         if (s == null)                                             //If it is not found, do nothing
         {
             Debug.Log("WrongName");
@@ -56,4 +62,6 @@ public class SoundManager : MonoBehaviour
         }
         s.AudioSource.Stop();           //Plays the clip with the audioSource
     }
+    
+    #endregion
 }

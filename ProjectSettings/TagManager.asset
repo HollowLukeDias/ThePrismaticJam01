@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1782913805
+    locked: 0
+  - name: FX
+    uniqueID: 1849599499
+    locked: 0
+  - name: Walls
+    uniqueID: 2513772235
     locked: 0
   - name: Canvas
     uniqueID: 3803264981

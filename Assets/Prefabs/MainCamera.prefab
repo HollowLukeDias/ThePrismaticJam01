@@ -95,6 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5400de38b86c3434690be2c09702e27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelationSpeed: 30
-  maxPixelation: 40
-  effectMaterial: {fileID: 2100000, guid: dc8a8a820757cba459dc7f2ef60f3435, type: 2}
+  _pixelationSpeed: 40
+  _maxPixelation: 40
+  _effectMaterial: {fileID: 2100000, guid: dc8a8a820757cba459dc7f2ef60f3435, type: 2}

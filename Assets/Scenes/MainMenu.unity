@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 1034784109}
   - component: {fileID: 1034784108}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,18 +775,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186004826}
   m_CullTransparentMesh: 0
---- !u!114 &676793043093950718 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7634685431742018042, guid: ae44724be616e7c47b6e5852ffb1fa90,
-    type: 3}
-  m_PrefabInstance: {fileID: 6960219065311240452}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8304482e4ccbb4fb404255a704dc01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2140218019620618905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -794,6 +782,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2140218019335459235, guid: 8c602ff65f8b54441baebd96336189e2,
+        type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140218019335459235, guid: 8c602ff65f8b54441baebd96336189e2,
+        type: 3}
+      propertyPath: canPause
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5540284733717998063, guid: 8c602ff65f8b54441baebd96336189e2,
         type: 3}
       propertyPath: m_Name
@@ -923,11 +921,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5667753328046770399, guid: 81b6bc24f90d280409297a1686e5d238,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b6bc24f90d280409297a1686e5d238, type: 3}
 --- !u!1001 &2939883842266891336
@@ -944,13 +937,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2939883842712845366, guid: 93cbc77c0d49dc44394bbc32d4af784a,
         type: 3}
-      propertyPath: fader
-      value: 
-      objectReference: {fileID: 676793043093950718}
-    - target: {fileID: 2939883842712845366, guid: 93cbc77c0d49dc44394bbc32d4af784a,
-        type: 3}
-      propertyPath: pixelationSpeed
-      value: 50
+      propertyPath: _maxPixelation
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2939883842712845512, guid: 93cbc77c0d49dc44394bbc32d4af784a,
         type: 3}
@@ -1029,6 +1017,16 @@ PrefabInstance:
     - target: {fileID: 7634685431742018042, guid: ae44724be616e7c47b6e5852ffb1fa90,
         type: 3}
       propertyPath: pixelation
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 7634685431742018042, guid: ae44724be616e7c47b6e5852ffb1fa90,
+        type: 3}
+      propertyPath: _fadeImage
+      value: 
+      objectReference: {fileID: 1033350292}
+    - target: {fileID: 7634685431742018042, guid: ae44724be616e7c47b6e5852ffb1fa90,
+        type: 3}
+      propertyPath: _pixelation
       value: 
       objectReference: {fileID: 519420030}
     - target: {fileID: 7634685431742018043, guid: ae44724be616e7c47b6e5852ffb1fa90,

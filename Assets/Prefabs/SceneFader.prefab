@@ -43,19 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8304482e4ccbb4fb404255a704dc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 0}
-  curveIn:
+  _fadeImage: {fileID: 0}
+  _curveIn:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 3.0523512
+      outSlope: 3.0523512
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.0875
     - serializedVersion: 3
       time: 1
       value: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  curveOut:
+  _curveOut:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -81,26 +81,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.70759755
-      value: 0.28727525
-      inSlope: 1.0485284
-      outSlope: 1.0485284
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 2.778093
+      outSlope: 2.778093
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.09166664
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  timeToFadeOut: 6
-  timeToFadeIn: 0.5
-  pixelation: {fileID: 0}
+  _timeToFadeOut: 6
+  _timeToFadeIn: 1
+  _pixelation: {fileID: 0}

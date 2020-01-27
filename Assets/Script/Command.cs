@@ -7,6 +7,8 @@ public abstract class Command
     public abstract void Execute(out float direction, Animator anim);
 }
 
+#region Classes that deal with Movement and Animation
+
 public class MoveUp : Command
 {
     public override void Execute(out float direction, Animator anim)
@@ -27,9 +29,9 @@ public class MoveDown : Command
         direction = -1f;
         
         anim.SetBool("Right", false);
-        anim.SetBool("Left", false);
-        anim.SetBool("Up", false);
-        anim.SetBool("Down", true);
+        anim.SetBool("Left",  false);
+        anim.SetBool("Up",    false);
+        anim.SetBool("Down",   true);
     }
 }
 
@@ -58,6 +60,8 @@ public class MoveLeft : Command
         anim.SetBool("Left", true);
     }
 }
+
+#endregion
 
 public class DoNothing : Command
 {

@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    [SerializeField]
-    private int bulletsAmount = 1;
-    private Vector2 bulletMoveDirection;
-    [SerializeField]
-    private float startTime, fireRate = 0.5f;
-
-    public float FireRate => fireRate;
-
-    private void Start()
+    [Range(0f, 60f)][SerializeField] private float _fireRate;
+    public float FireRate => _fireRate;
+    public static void FireOneBullet(Quaternion rotation, Vector3 shootingPoint)
     {
-        startTime = 0f;
-    }
-    
-    
-
-    public void Fire(Quaternion rotation, Vector3 direction, Vector3 shootingPoint)
-    {
-        GameObject bul = BulletPool.bulletPoolInstance.getBullet();
+        BulletPool.BulletPoolInstance.GetBullet(out var bul);
+        if (bul != null)
+        {
             bul.transform.position = shootingPoint;
             bul.transform.rotation = rotation; //Changed this so you can shooting using player!
             bul.SetActive(true);
-            bul.GetComponent<Bullet>().SetMoveDirection(direction);
         }
+        else
+        {
+            Debug.LogError("Error in Pool - Null Object");
+        }
+        
+    }
 
 }

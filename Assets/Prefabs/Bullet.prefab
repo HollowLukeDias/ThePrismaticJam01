@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 70514883590663932}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3196635386360660804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,7 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89485b8917f37f40bc87db0758cd300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 9
+  _timeToDestroy: 3
+  _explosionFX: {fileID: 5867979752938873333, guid: 81808af3704402a4da19012f1f8546fd,
+    type: 3}
+  moveSpeed: 6
 --- !u!50 &50425407153453166
 Rigidbody2D:
   serializedVersion: 4
@@ -129,6 +132,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0049692094, y: -0.002485752}
-  m_Size: {x: 0.35942727, y: 0.73935056}
+  m_Offset: {x: -0.004969202, y: -0.03159762}
+  m_Size: {x: 0.3594273, y: 0.6811288}
   m_Direction: 0
