@@ -36,9 +36,9 @@
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateEffect.shader" />
         <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/InputHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/BulletPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/FireBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/InputHandler.cs" />
       </list>
     </option>
   </component>

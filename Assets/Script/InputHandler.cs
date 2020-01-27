@@ -5,6 +5,7 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private Transform shootingPoint;
+    [SerializeField] private GameObject gun;
     private FireBullet firing;
     private Animator anim;
     private Camera main;
@@ -32,9 +33,19 @@ public class InputHandler : MonoBehaviour
     private void Update()
     {
         HandleMovementInput();
+        HandleAim();
         HandleFireInput();
     }
 
+    private void HandleAim()
+    {
+        var target = main.ScreenToWorldPoint(Input.mousePosition);
+        var direction = target - shootingPoint.transform.position ;
+        var angleFloat = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        var angleQuaternion = Quaternion.Euler(0, 0, angleFloat - 45f);
+        gun.transform.rotation = angleQuaternion;
+
+    }
     private void HandleFireInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -51,12 +62,11 @@ public class InputHandler : MonoBehaviour
         var fireRate = firing.FireRate;
         while (true)
         {
-            var position = main.ScreenToWorldPoint(Input.mousePosition);
-            position = new Vector3(position.x, position.y, 0);
-            var direction =  position - transform.position ;
+            var target = main.ScreenToWorldPoint(Input.mousePosition);
+            var direction = target - shootingPoint.transform.position ;
             var angleFloat = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             var angleQuaternion = Quaternion.Euler(0, 0, angleFloat - 90f);
-            firing.Fire(angleQuaternion, direction);
+            firing.Fire(angleQuaternion, direction, shootingPoint.transform.position);
             yield return new WaitForSeconds(1/fireRate);
         }
     }
