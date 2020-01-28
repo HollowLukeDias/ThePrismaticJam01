@@ -20,18 +20,23 @@ public class ImagePixelateOverTime : MonoBehaviour
     {
         pixelation = StartCoroutine(PixelateOut());
     }
+    
+    /// <summary>
+    /// Sets the current pixels to a lot less
+    /// <para>Then it subtracts from there each iteration, making the scene seems to pixelate</para>
+    /// </summary>
+    /// <returns>The time between pixelations</returns>
     private IEnumerator PixelateOut()
     {
         const float startColumnPixelation = 384f;
         const float startRowPixelation = 216f;
         
         float currentColumnPixelation = startColumnPixelation;
-        float currentRowPixelation = startRowPixelation;
         var i = 0;
         while (currentColumnPixelation >= _maxPixelation)
         {
             currentColumnPixelation = startColumnPixelation - 2f*i;
-            currentRowPixelation = startRowPixelation - 1.125f*i;
+            var currentRowPixelation = startRowPixelation - 1.125f*i;
             _effectMaterial.SetFloat("_Colummns", currentColumnPixelation);
             _effectMaterial.SetFloat("_Rows", currentRowPixelation);
             i++;

@@ -9,6 +9,11 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
+        HandleMenuInput();
+    }
+
+    private void HandleMenuInput()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused && canPause)
@@ -26,12 +31,7 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1f;
         FindObjectOfType<Fader>().FadeTo(sceneName);
     }
-
-    public void OptionsMenu()
-    {
-        //TODO: Make another canvas with the sound options and credits
-    }
-
+    
     public void Exit()
     {
         Application.Quit();

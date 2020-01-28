@@ -35,6 +35,11 @@ public class BulletPool : MonoBehaviour
     
     #region Auxiliay Methods
     
+    /// <summary>
+    /// Searches for a disabled (not currently in use) bullet inside the object pool
+    /// </summary>
+    /// <param name="bullet">The bullet to be returned, can be null if no disabled bullet is found</param>
+    /// <param name="found">If it found a disabled bullet, CreateBullet is not called</param>
     private void SearchBullet(out GameObject bullet, out bool found)
     {
         bullet = null;
@@ -47,13 +52,16 @@ public class BulletPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates a bullet and adds it to the object pool for it to be used later
+    /// </summary>
     private void CreateBullet()
     {
         var bullet = Instantiate(_pooledBullet, transform);
         bullet.SetActive(false);
         _bullets.Add(bullet);
     }
-
+    
     private void CreateInitialBulletPool()
     {
         for (int i = 0; i < _initialBullets; i++)
@@ -64,6 +72,11 @@ public class BulletPool : MonoBehaviour
     
     #endregion
 
+    /// <summary>
+    /// Searches for a bullet that is not currently in use inside the object pool
+    /// <para>If no bullet is found it creates another if the cap has not been reached</para>
+    /// </summary>
+    /// <param name="bullet">Returns the object bullet</param>
     public void GetBullet(out GameObject bullet)
     {
         SearchBullet(out bullet, out bool found);

@@ -54,9 +54,11 @@ public class PlayerInputHandler : MonoBehaviour
     
     private void HandleAim()
     {
-        var angleQuaternion = CalculateAngle(false);
+        var target = _main.ScreenToWorldPoint(Input.mousePosition);
+        var angleQuaternion = CalculateAngle(target, -45);
         _gunObject.transform.rotation = angleQuaternion;
     }
+    
     private void HandleFireInput()
     {
         if (Input.GetMouseButtonDown(0))
@@ -68,41 +70,48 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds the starting angle of the bullet
+    ///<para>Calls on FireOneBullet to shoot the bullet from that angle and from the shooting point</para>
+    ///<para>Deals with fire rate by setting it to be the number of bullets per second</para>
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator HandleFire()
     {
         var fireRate = _fireBullet.FireRate;
         while (true)
         {
-            var angleQuaternion = CalculateAngle(true);
+            var target = _main.ScreenToWorldPoint(Input.mousePosition);
+            float randAngle = Random.Range(-_bulletAngleRandomnessFactor, _bulletAngleRandomnessFactor);
+            var angleQuaternion = CalculateAngle(target, randAngle);
             FireBullet.FireOneBullet(angleQuaternion, _shootingPoint.transform.position);
             yield return new WaitForSeconds(1/fireRate);
         }
     }
     
-    private Quaternion CalculateAngle(bool isShooting)
+    /// <summary>
+    /// Calculates the angle between two points
+    /// </summary>
+    /// <param name="target">The point where the object wants to face</param>
+    /// <param name="angleOffset">Offset for fixes and randomness (accuracy)</param>
+    /// <returns></returns>
+    private Quaternion CalculateAngle(Vector3 target, float angleOffset)
     {
-        float randAngle = Random.Range(-_bulletAngleRandomnessFactor, _bulletAngleRandomnessFactor);
-        var target = _main.ScreenToWorldPoint(Input.mousePosition);
         var direction = target - _shootingPoint.transform.position;
         var angleFloat = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        if (isShooting)
-        {
-            float fixedRandomAngle = angleFloat - 90f + randAngle;
-            var angleQuaternion = Quaternion.Euler(0, 0, fixedRandomAngle);
-            return angleQuaternion;
-        }
-        else
-        {
-            float fixedAngle = angleFloat - 45f;
-            var angleQuaternion = Quaternion.Euler(0, 0, fixedAngle);
-            return angleQuaternion;
-        }
-        
+        float fixedAngle = angleFloat - 90;
+        var angleQuaternion = Quaternion.Euler(0, 0, fixedAngle + angleOffset);
+        return angleQuaternion;
+
     }
 
     #endregion
     
     #region Character Movement
+    
+    /// <summary>
+    /// Just checks if the player has pressed any keys and deals with them accordingly
+    /// </summary>
     private void HandleMovementInput()
     {
         if (Input.GetKey(KeyCode.W))
@@ -134,6 +143,9 @@ public class PlayerInputHandler : MonoBehaviour
         ExecuteMovement();
     }
 
+    /// <summary>
+    /// Normalizes the movement direction and multiplies by the speed it should have on that frame
+    /// </summary>
     private void ExecuteMovement()
     {
         float speedInFrame = _movementSpeed * Time.deltaTime;

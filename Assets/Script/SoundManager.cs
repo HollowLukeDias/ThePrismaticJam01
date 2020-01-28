@@ -41,26 +41,34 @@ public class SoundManager : MonoBehaviour
     
     #region Play and Stop logic
     
-    public void Play(string musicName)           //The method that actually plays the clip in any other script
+    /// <summary>
+    /// Finds a sound inside the array of sounds in the Object and plays it
+    /// </summary>
+    /// <param name="soundName">The name of the sound it will search inside the array</param>
+    public void Play(string soundName)
     {
-        Sounds s = Array.Find(_sounds, sound => sound.name == musicName); //Searches for a sound with the name passed as a parameter
-        if (s == null)                                             //If it is not found, do nothing
+        Sounds s = Array.Find(_sounds, sound => sound.name == soundName);
+        if (s == null)
         {
             Debug.Log("WrongName");
             return;
         }
-        s.AudioSource.Play();           //Plays the clip with the audioSource
+        s.AudioSource.Play();
     }
 
-    public void Stop(string musicName)
+    /// <summary>
+    /// Finds a sound inside the array of sounds in the Object and plays it
+    /// </summary>
+    /// <param name="soundName">The name of the sound it will search inside the array</param>
+    public void Stop(string soundName)
     {
-        Sounds s = Array.Find(_sounds, sound => sound.name == musicName); //Searches for a sound with the name passed as a parameter
-        if (s == null)                                             //If it is not found, do nothing
+        Sounds s = Array.Find(_sounds, sound => sound.name == soundName);
+        if (s == null)
         {
             Debug.Log("WrongName");
             return;
         }
-        s.AudioSource.Stop();           //Plays the clip with the audioSource
+        s.AudioSource.Stop();
     }
     
     #endregion

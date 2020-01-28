@@ -6,6 +6,12 @@ public class FireBullet : MonoBehaviour
 {
     [Range(0f, 60f)][SerializeField] private float _fireRate;
     public float FireRate => _fireRate;
+    
+    /// <summary>
+    /// Activates One Bullet in the shooting point
+    /// </summary>
+    /// <param name="rotation">bullet initial facing direction</param>
+    /// <param name="shootingPoint">from where the bullet is shot from</param>
     public static void FireOneBullet(Quaternion rotation, Vector3 shootingPoint)
     {
         BulletPool.BulletPoolInstance.GetBullet(out var bul);
