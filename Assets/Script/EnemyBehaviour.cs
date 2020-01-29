@@ -4,45 +4,23 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] private int _hp;
-    [SerializeField] private int _baseDamage;
-    [SerializeField] private GameObject _hitBox;
-    [SerializeField] private Rigidbody2D _rb2d;
-    private bool _engage;
-    private Transform _player;
-    [SerializeField] private float _range;
-
-    #region Unity Callbacks
-
-    void Start()
-    {
-        _player = FindObjectOfType<PlayerInputHandler>().transform;
-        _rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Vector2.Distance(_player.position, transform.position) > _range)
-        {
-            StartCoroutine(Relaxed());
-        }
-        else {
-            _engage = true;
-            _rb2d.velocity = Vector2.zero;
-            StopCoroutine(Relaxed());
-            StopCoroutine(StopWalk());
-            Engage();
-        }
-    }
-    #endregion
+    [SerializeField] protected int _hp;
+                        public int hp { get { return _hp; } }
+    [SerializeField] protected int _baseDamage;
+    [SerializeField] protected GameObject _hitBox;
+    [SerializeField] protected Rigidbody2D _rb2d;
+    protected bool _engage;
+    public bool distant;
+    protected Transform _player;
+    [SerializeField] protected float _range;
+    protected Coroutine _coroutine;
 
     #region Coroutines
     /// <summary>
     /// When the player is away
     /// </summary>
     /// <returns></returns>
-    private IEnumerator Relaxed() {
+    protected IEnumerator Relaxed() {
         yield return new WaitForSeconds(3f);
         _rb2d.velocity = new Vector2(Random.Range(0f, 2f), Random.Range(0f, 2f));
         StartCoroutine(StopWalk());
@@ -51,7 +29,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     /// Called inside Relaxed() to stop velocity
     /// </summary>
     /// <returns></returns>
-    private IEnumerator StopWalk() {
+    protected IEnumerator StopWalk() {
         yield return new WaitForSeconds(0.2f);
         _rb2d.velocity = Vector2.zero;
     }
@@ -69,7 +47,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     /// defines action for meelee attack
     /// </summary>
     /// <param name="damage"></param>
-    public abstract void BasicAttack(int damage);
+    public abstract int BasicAttack(int damage, int characterHP);
 
     public abstract void Die();
     #endregion
