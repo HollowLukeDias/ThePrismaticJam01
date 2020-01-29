@@ -7,7 +7,7 @@ public abstract class Command
     public abstract void Execute(out float direction, Animator anim);
 }
 
-#region Classes that deal with Movement and Animation
+#region Classes that deal with Movement/Dash and Animation
 
 public class MoveUp : Command
 {
