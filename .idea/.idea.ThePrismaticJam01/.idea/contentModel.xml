@@ -10,6 +10,7 @@
         <e p="Script" t="Include">
           <e p="Bullet.cs" t="Include" />
           <e p="BulletPool.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
           <e p="Command.cs" t="Include" />
           <e p="EnemyBehaviour.cs" t="Include" />
           <e p="Fader.cs" t="Include" />
@@ -18,6 +19,7 @@
           <e p="ObjectPool.cs" t="Include" />
           <e p="PlayerInputHandler.cs" t="Include" />
           <e p="PlayerStats.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
           <e p="SoundManager.cs" t="Include" />
           <e p="Sounds.cs" t="Include" />
         </e>

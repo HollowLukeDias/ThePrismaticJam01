@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Vector2 _moveDirection;
     private Rigidbody2D _rb2D;
     private Coroutine _destroyAfterTime;
+    private SpriteRenderer _spriteRenderer;
     
     [SerializeField] private float moveSpeed = 0.1f;
 
@@ -17,31 +18,26 @@ public class Bullet : MonoBehaviour
     
     private void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb2D = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
         HandleMovement();
+        if (!_spriteRenderer.isVisible)
+        {
+            DestroyBullet();
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Bullet"))
+        if (other.CompareTag("Player") || other.CompareTag("Bullet") || other.CompareTag("Room"))
         {
             return;
         }
         Explode();
-    }
-    
-    private void OnEnable()
-    {
-        _destroyAfterTime = StartCoroutine(DestroyAfterTime());
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(DestroyAfterTime());
     }
 
     #endregion
@@ -54,11 +50,6 @@ public class Bullet : MonoBehaviour
     public void Explode() {
         Instantiate(_explosionFX, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-    }
-    private IEnumerator DestroyAfterTime()
-    {
-        yield return new WaitForSeconds(_timeToDestroy);
-        DestroyBullet();
     }
 
     private void HandleMovement()

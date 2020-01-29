@@ -23,8 +23,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/Menu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Fader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Command/Assets/Command.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Command.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -35,7 +37,6 @@
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Shader/ImagePixelateEffect.shader" />
         <option value="$PROJECT_DIR$/Assets/Script/InputHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/FireBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Fader.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Menu.cs" />
@@ -47,7 +48,10 @@
         <option value="$PROJECT_DIR$/Assets/Script/EnemyBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/Room.cs" />
       </list>
     </option>
   </component>
