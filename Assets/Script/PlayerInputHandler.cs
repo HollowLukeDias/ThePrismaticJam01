@@ -18,6 +18,9 @@ public class PlayerInputHandler : MonoBehaviour
     private Rigidbody2D _rb2D;
     private Vector2 _moveInput;
     private Coroutine _firingCoroutine;
+
+    //hp out of place
+    public static int hp = 10;
     
     #endregion
 
