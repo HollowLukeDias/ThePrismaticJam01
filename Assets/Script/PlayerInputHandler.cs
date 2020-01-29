@@ -7,18 +7,27 @@ public class PlayerInputHandler : MonoBehaviour
 {
     #region Global Variables
     
+    [Header("Dash Setup")] 
+    [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _dashLength;
+    [SerializeField] private float _dashCooldown;
+    private static bool isInvincible;
+    private float _dashCounter, _dashCoolCounter;
+    
     [SerializeField] private float _movementSpeed     = 1f;
     [SerializeField] private Transform _shootingPoint = null;
     [SerializeField] private GameObject _gunObject    = null;
     [SerializeField] private float _bulletAngleRandomnessFactor = 10f;
+    
     private FireBullet _fireBullet;
     private Animator _animator;
     private Camera _main;
     private Command _keyW, _keyS, _keyA, _keyD, _keyNothing;
     private Rigidbody2D _rb2D;
     private Vector2 _moveInput;
+    private Vector2 _lasMoveInput;
     private Coroutine _firingCoroutine;
-    
+
     #endregion
 
     #region Unity callbacks
@@ -55,7 +64,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void HandleAim()
     {
         var target = _main.ScreenToWorldPoint(Input.mousePosition);
-        var angleQuaternion = CalculateAngle(target, -45);
+        var angleQuaternion = CalculateAngle(target, +45);
         _gunObject.transform.rotation = angleQuaternion;
     }
     
@@ -114,33 +123,58 @@ public class PlayerInputHandler : MonoBehaviour
     /// </summary>
     private void HandleMovementInput()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space) && _dashCoolCounter <= 0)
         {
-            _keyW.Execute(out _moveInput.y, _animator);
+            StartCoroutine(ExecuteDash());
+            _dashCoolCounter = _dashCooldown;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if(_dashCounter<=0)
         {
-            _keyS.Execute(out _moveInput.y, _animator);
-        }
-        else
-        {
-            _keyNothing.Execute(out _moveInput.y, _animator);
+            isInvincible = false;
+            if (Input.GetKey(KeyCode.W))
+            {
+                _keyW.Execute(out _moveInput.y, _animator);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                _keyS.Execute(out _moveInput.y, _animator);
+            }
+            else
+            {
+                _keyNothing.Execute(out _moveInput.y, _animator);
+            }
+        
+            if (Input.GetKey(KeyCode.D))
+            {
+                _keyD.Execute(out _moveInput.x, _animator);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                _keyA.Execute(out _moveInput.x, _animator);
+            }
+            else
+            {
+                _keyNothing.Execute(out _moveInput.x, _animator);
+            }
+            
+            ExecuteMovement();
+            _dashCoolCounter -= Time.deltaTime;
         }
         
-        if (Input.GetKey(KeyCode.D))
+    }
+
+    private IEnumerator ExecuteDash()
+    {
+        _dashCounter = _dashLength;
+        isInvincible = true;
+        while (_dashCounter >= 0)
         {
-            _keyD.Execute(out _moveInput.x, _animator);
+            Debug.Log("HEEEEEEEERE!!!!");
+            float speedInFrame = _dashSpeed * Time.deltaTime;
+            _rb2D.velocity = _lasMoveInput.normalized * speedInFrame;
+            _dashCounter -= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            _keyA.Execute(out _moveInput.x, _animator);
-        }
-        else
-        {
-            _keyNothing.Execute(out _moveInput.x, _animator);
-        }
-        
-        ExecuteMovement();
     }
 
     /// <summary>
@@ -148,6 +182,7 @@ public class PlayerInputHandler : MonoBehaviour
     /// </summary>
     private void ExecuteMovement()
     {
+        _lasMoveInput = _moveInput;
         float speedInFrame = _movementSpeed * Time.deltaTime;
         _rb2D.velocity = _moveInput.normalized * speedInFrame;
     }

@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 5671957080931154241}
   m_Layer: 0
   m_Name: PlayerControl
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,10 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86180f9fd9977348b986b1e0681e88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 1
-  _shootingPoint: {fileID: 0}
-  _gunObject: {fileID: 0}
-  _bulletAngleRandomnessFactor: 10
+  _dashSpeed: 1400
+  _dashLength: 0.125
+  _dashCooldown: 0.5
+  _movementSpeed: 200
+  _shootingPoint: {fileID: 5671957079086857077}
+  _gunObject: {fileID: 5671957080518835322}
+  _bulletAngleRandomnessFactor: 5
 --- !u!114 &6466507559026155776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ff69532a05c594f8ab77dd6d3e4c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireRate: 2
+  _fireRate: 31.2
 --- !u!70 &5671957080931154240
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
