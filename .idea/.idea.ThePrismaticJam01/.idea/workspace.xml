@@ -49,9 +49,9 @@
         <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/CameraController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/PlayerStats.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Room.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/PlayerStats.cs" />
       </list>
     </option>
   </component>
@@ -95,6 +95,7 @@
       <workItem from="1580020876254" duration="885000" />
       <workItem from="1580022023383" duration="11224000" />
       <workItem from="1580187143968" duration="3554000" />
+      <workItem from="1580325650706" duration="3839000" />
     </task>
     <servers />
   </component>

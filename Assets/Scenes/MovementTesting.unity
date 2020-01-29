@@ -8453,6 +8453,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 860206894, guid: befdb9f313ad0884d8939bcd37584284, type: 3}
+      propertyPath: _doors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 860206894, guid: befdb9f313ad0884d8939bcd37584284, type: 3}
+      propertyPath: _doors.Array.data[2]
+      value: 
+      objectReference: {fileID: 1101774727}
     - target: {fileID: 1220933325, guid: befdb9f313ad0884d8939bcd37584284, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -33922,7 +33930,7 @@ PrefabInstance:
       objectReference: {fileID: 500659953}
     - target: {fileID: 1507897406, guid: 0eecd12fe7e45bc4e8d10037a82339dd, type: 3}
       propertyPath: _initialHealth
-      value: 8
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2786237584216981427, guid: 0eecd12fe7e45bc4e8d10037a82339dd,
         type: 3}
