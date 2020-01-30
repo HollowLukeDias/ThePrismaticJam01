@@ -28,12 +28,11 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 _lasMoveInput;
     private Coroutine _firingCoroutine;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     //hp out of place
     public static int hp = 10;
     
-=======
->>>>>>> origin/Luke
+//=======>>>>>>> origin/Luke
     #endregion
 
     #region Unity callbacks
