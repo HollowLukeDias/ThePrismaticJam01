@@ -24,11 +24,11 @@ public class PlayerStats : MonoBehaviour
     {
         for (int i = 0; i < _initialHealth/2; i++)
         {
-            AddHealth(2);
+           // AddHealth(2);
         }
     }
     
-    private void AddHealth(int lifeAdded)
+  /*  private void AddHealth(int lifeAdded)
     {
         _maxHealth += lifeAdded;
         _healthPanel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(
@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
         var a = Instantiate(_healthImage);
         a.transform.SetParent(_healthPanel.transform, false);
     }
-
+    */
     private void OnCollisionEnter2D(Collision2D other)
     {
         DamagePlayer();

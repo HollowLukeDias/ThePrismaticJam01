@@ -4,16 +4,17 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] protected int _hp;
-                        public int hp { get { return _hp; } }
-    [SerializeField] protected int _baseDamage;
-    [SerializeField] protected GameObject _hitBox;
-    [SerializeField] protected Rigidbody2D _rb2d;
-    protected bool _engage;
+    [SerializeField] protected int Hp;
+                        public int hp { get { return Hp; } }
+    [SerializeField] protected int BaseDamage;
+    [SerializeField] protected Rigidbody2D Rb2d;
+    [SerializeField] protected BoxCollider2D HitBox;
+    protected bool IsEngaged;
     public bool distant;
-    protected Transform _player;
-    [SerializeField] protected float _range;
-    protected Coroutine _coroutine;
+    [SerializeField] protected Transform Player;
+    [SerializeField] protected float Range;
+    protected Coroutine Coroutine;
+    protected bool IsRelaxed = false;
 
     #region Coroutines
     /// <summary>
@@ -33,16 +34,26 @@ public abstract class EnemyBehaviour : MonoBehaviour
     protected IEnumerator StopWalk() {
         yield return new WaitForSeconds(0.2f);
         _rb2d.velocity = Vector2.zero;
+    /*protected IEnumerator Relaxed() {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.3f);
+            Debug.Log("Relax");
+            Rb2d.velocity = new Vector2(Random.Range(0f, 2f), Random.Range(0f, 2f));
+            //yield return new WaitForSeconds(0.2f);
+            Rb2d.velocity = Vector2.zero;
+        }
     }
+    */
     #endregion
-    public void receiveDamage(int damage) {
-        _hp -= damage;
+    public void ReceiveDamage(int damage) {
+        Hp -= damage;
     }
     #region Abstract Methods
     /// <summary>
     /// defines de battle behaviour
     /// </summary>
-    public abstract void Engage();
+    public abstract void Engagement();
 
     /// <summary>
     /// defines action for meelee attack

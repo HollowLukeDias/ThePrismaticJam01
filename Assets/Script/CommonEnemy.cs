@@ -7,27 +7,41 @@ public class CommonEnemy : EnemyBehaviour
     [SerializeField] private float fireRate, attackRate;
     
     
+
+    Vector3 offset;
+    float sqrDistance;
+
+    // Start is called before the first frame update
     void Start()
     {
-        _player = FindObjectOfType<PlayerInputHandler>().transform;
-        _rb2d = GetComponent<Rigidbody2D>();
-        _hitBox = GetComponentInChildren<Collider2D>().gameObject;
+        Player = FindObjectOfType<PlayerInputHandler>().transform;
+        Rb2d = GetComponent<Rigidbody2D>();
+        HitBox = GetComponentInChildren<BoxCollider2D>();
+        Time.timeScale = 1f;
     }
     
     
     void Update()
-    {
-        if (Vector2.Distance(_player.position, transform.position) > _range)
+    {   
+        offset = Player.position - transform.position;
+        sqrDistance = offset.sqrMagnitude;
+
+        if ( sqrDistance > (Range * Range))
         {
             StopAllCoroutines();
-            StartCoroutine(Relaxed());
+            if (!IsRelaxed)
+            {
+                Coroutine = StartCoroutine(Relaxed());
+                IsRelaxed = true;
+                Debug.Log("Here");
+            }
         }
-        else if(!_engage)
+        else if(!IsEngaged)
         {
-            _engage = true;
-            _rb2d.velocity = Vector2.zero;
-            transform.LookAt(_player.position);
-            Engage();
+            IsEngaged = true;
+            Rb2d.velocity = Vector2.zero;
+            transform.LookAt(Player.position);
+            Engagement();
         }
     }
     
@@ -45,14 +59,16 @@ public class CommonEnemy : EnemyBehaviour
         Debug.Log("Dead");
     }
 
-    public override void Engage()
+    public override void Engagement()
     {
-        _coroutine = StartCoroutine(Attack(distant));
+        IsRelaxed = false;
+        Coroutine = StartCoroutine(Attack(distant));
     }
 
     private IEnumerator Attack(bool distant) {
         do
         {
+            PlayerInputHandler.hp = BasicAttack(BaseDamage, PlayerInputHandler.hp);
             yield return new WaitForSeconds(attackRate);
         } while (!distant);
 
@@ -61,5 +77,16 @@ public class CommonEnemy : EnemyBehaviour
             Debug.Log("Atirando");
             yield return new WaitForSeconds(fireRate);
         } while (distant);
+    }
+    private IEnumerator Relaxed()
+    {
+        while (true)
+        {
+            //yield return new WaitForSeconds(.3f);
+            Debug.Log("Relax");
+            Rb2d.velocity = new Vector2(Random.Range(0f, 2f), Random.Range(0f, 2f));
+            yield return new WaitForSeconds(0.2f);
+            Rb2d.velocity = Vector2.zero;
+        }
     }
 }
