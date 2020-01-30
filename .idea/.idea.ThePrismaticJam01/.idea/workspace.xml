@@ -15,6 +15,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerStats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/BulletPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/CommonEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/FireBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Command/Assets/InputHandler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -24,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Fader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/LevelGeneration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Command/Assets/Command.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Script/Room.cs" root0="FORCE_HIGHLIGHTING" />
@@ -45,13 +47,15 @@
         <option value="$PROJECT_DIR$/Assets/Script/BulletPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/GenericObjectPool.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/ObjectPool.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/EnemyBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Command.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/Script/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/PlayerInputHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/CommonEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/EnemyBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/Room.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Script/PlayerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Script/LevelGeneration.cs" />
       </list>
     </option>
   </component>
@@ -95,7 +99,7 @@
       <workItem from="1580020876254" duration="885000" />
       <workItem from="1580022023383" duration="11224000" />
       <workItem from="1580187143968" duration="3554000" />
-      <workItem from="1580325650706" duration="3839000" />
+      <workItem from="1580325650706" duration="24800000" />
     </task>
     <servers />
   </component>
@@ -125,6 +129,19 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Script/EnemyBehaviour.cs</url>
+          <line>39</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Script/EnemyBehaviour.cs" initialLine="38">
+            <startOffsets>
+              <option value="1217" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1218" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

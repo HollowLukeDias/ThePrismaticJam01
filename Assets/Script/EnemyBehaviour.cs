@@ -25,6 +25,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
         _rb2d.velocity = new Vector2(Random.Range(0f, 2f), Random.Range(0f, 2f));
         StartCoroutine(StopWalk());
     }
+    
     /// <summary>
     /// Called inside Relaxed() to stop velocity
     /// </summary>
@@ -50,6 +51,7 @@ public abstract class EnemyBehaviour : MonoBehaviour
     public abstract int BasicAttack(int damage, int characterHP);
 
     public abstract void Die();
+    
     #endregion
 }
 

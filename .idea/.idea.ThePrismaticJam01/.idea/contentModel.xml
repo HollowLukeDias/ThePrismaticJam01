@@ -12,9 +12,12 @@
           <e p="BulletPool.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="Command.cs" t="Include" />
+          <e p="CommonEnemy.cs" t="Include" />
           <e p="EnemyBehaviour.cs" t="Include" />
           <e p="Fader.cs" t="Include" />
           <e p="FireBullet.cs" t="Include" />
+          <e p="HitBoxScript.cs" t="Include" />
+          <e p="LevelGeneration.cs" t="Include" />
           <e p="Menu.cs" t="Include" />
           <e p="ObjectPool.cs" t="Include" />
           <e p="PlayerInputHandler.cs" t="Include" />

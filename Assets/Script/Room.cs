@@ -8,26 +8,7 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject[] _doors;
     private float _waitTime = 0.5f;
     
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            CameraController.Instance.Target = transform;
-            if (_closeWhenEnter)
-            {
-                while (_waitTime >= 0)
-                {
-                    _waitTime -= Time.deltaTime;
-                }
-                foreach (var door in _doors)
-                {
-                    door.SetActive(true);
-                }
-                _closeWhenEnter = false;
-            }
-        }
-    }
-
+    
     private void Update()
     {
         if (!_closeWhenEnter && Input.GetKeyDown(KeyCode.K))
@@ -38,4 +19,34 @@ public class Room : MonoBehaviour
             }
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerEntrance();
+        }
+    }
+    
+    
+    /// <summary>
+    /// updates the camera's position and if it first time the player enters, enables the doors 
+    /// </summary>
+    private void PlayerEntrance(){
+        CameraController.Instance.Target = transform;
+        if (_closeWhenEnter)
+        {
+            while (_waitTime >= 0)
+            {
+                _waitTime -= Time.deltaTime;
+            }
+            foreach (var door in _doors)
+            {
+                door.SetActive(true);
+            }
+            _closeWhenEnter = false;
+        }
+    }
+
+
 }

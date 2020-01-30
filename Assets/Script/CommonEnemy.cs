@@ -6,15 +6,15 @@ public class CommonEnemy : EnemyBehaviour
 {
     [SerializeField] private float fireRate, attackRate;
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         _player = FindObjectOfType<PlayerInputHandler>().transform;
         _rb2d = GetComponent<Rigidbody2D>();
         _hitBox = GetComponentInChildren<Collider2D>().gameObject;
     }
-
-    // Update is called once per frame
+    
+    
     void Update()
     {
         if (Vector2.Distance(_player.position, transform.position) > _range)
@@ -53,7 +53,6 @@ public class CommonEnemy : EnemyBehaviour
     private IEnumerator Attack(bool distant) {
         do
         {
-            PlayerInputHandler.hp = BasicAttack(_baseDamage, PlayerInputHandler.hp);
             yield return new WaitForSeconds(attackRate);
         } while (!distant);
 

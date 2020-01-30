@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        GetComponentInChildren<SpriteRenderer>().sharedMaterial.color = Color.white;
         _currentHealth = _initialHealth;
         AddInitialHealthImage();
 
@@ -42,6 +43,10 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// It gets the child image with an index based on the player's health
+    /// <para>Then it assigns the image with the next sprite on the array (that repeats itself after reaching the end)</para> 
+    /// </summary>
     private void DamagePlayer()
     {
         var imageObject = _healthPanel.transform.GetChild((int)Mathf.Ceil(_currentHealth/2f)-1);
@@ -59,3 +64,4 @@ public class PlayerStats : MonoBehaviour
     }
 
 }
+
